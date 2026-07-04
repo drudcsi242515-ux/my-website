@@ -296,7 +296,7 @@
         }
 
         /* ----------------------------------------
-           ✨ ستایلی شاشەی دووەم - فۆڕم و گۆڕانکارییەکان
+            ✨ ستایلی شاشەی دووەم
         ------------------------------------------- */
         .order-screen-container {
             height: 100%;
@@ -311,12 +311,14 @@
         .header-sub { text-align: center; font-size: 13px; color: #718093; margin-bottom: 20px; font-weight: 500;}
         .form-box { background: #ffffff; border-radius: 20px; padding: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); border: 1px solid #f1f2f6; }
         .form-row { display: flex; gap: 10px; margin-bottom: 12px; }
+        .form-box { background: #ffffff; border-radius: 20px; padding: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); border: 1px solid #f1f2f6; }
+        .form-row { display: flex; gap: 10px; margin-bottom: 12px; }
         .form-field { flex: 1; display: flex; flex-direction: column; text-align: right; }
         .form-field label { font-size: 13px; color: #2f3640; margin-bottom: 5px; font-weight: 700;}
         .form-field input, .form-field select, .form-field textarea {
             width: 100%; padding: 10px; border: 1px solid #dcdde1; border-radius: 12px; box-sizing: border-box; background-color: #fbfbfb; font-family: inherit; font-size: 13px; font-weight: 500;
         }
-        .coupon-container { display: flex; gap: 5px; }
+        .coupon-container { display: flex; gap: 5px; margin-bottom: 12px; }
         .coupon-btn { background: #2f3640; border: none; color: #ffffff; border-radius: 12px; padding: 0 15px; font-size: 13px; cursor: pointer; font-family: inherit; font-weight: 700; transition: 0.2s;}
         .coupon-btn:active { transform: scale(0.95); }
         
@@ -339,7 +341,6 @@
         .how-sub { font-size: 14px; color: #718093; margin-bottom: 25px; font-weight: 500; }
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         
-        /* 1. ئەنیمەیشنی هێواش بۆ سەرکەوتن */
         .grid-card { 
             background: #ffffff; border-radius: 20px; padding: 20px 10px; border: 1px solid #f1f2f6; box-shadow: 0 4px 15px rgba(0,0,0,0.02); position: relative; text-align: center; 
             opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out;
@@ -357,14 +358,22 @@
         .card-title { font-size: 15px; color: #1e272e; margin: 0 0 5px 0; font-weight: 700; }
         .card-desc { font-size: 12px; color: #718093; margin: 0; font-weight: 500; line-height: 1.4; }
 
-        /* 💬 بەشی ڕای کڕیاران (Reviews) */
+        /* 🖼️ بەشی نوێ: "نموونەی کارتەکانمان" */
+        .portfolio-section { margin-top: 40px; text-align: center; }
+        .portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
+        .portfolio-item { background: #ffffff; border-radius: 15px; overflow: hidden; border: 1px solid #f1f2f6; box-shadow: 0 4px 10px rgba(0,0,0,0.02); text-decoration: none; display: block; transition: transform 0.2s; }
+        .portfolio-item:active { transform: scale(0.97); }
+        .portfolio-img { width: 100%; height: 120px; object-fit: cover; display: block; background-color: #eaeaea; }
+        .portfolio-name { font-size: 13px; color: #2f3640; padding: 8px 5px; font-weight: 700; display: block; }
+
+        /* 💬 بەشی ڕای کڕیاران */
         .reviews-section { margin-top: 40px; text-align: right; }
         .review-box { background: #ffffff; border-radius: 15px; padding: 12px 15px; margin-bottom: 12px; border: 1px solid #f1f2f6; display: flex; gap: 10px; align-items: flex-start; }
         .review-avatar { background: #ffe4e6; color: #ff4757; width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; flex-shrink: 0; font-weight: bold;}
         .review-text { font-size: 12px; color: #2f3640; font-weight: 500; margin: 0; line-height: 1.4;}
         .review-name { font-size: 11px; color: #a0a0a0; margin-top: 4px; display: block;}
 
-        /* ❓ بەشی پرسیارە باوەکان (FAQ) */
+        /* ❓ بەشی پرسیارە باوەکان */
         .faq-section { margin-top: 40px; text-align: right; }
         .faq-item { background: #ffffff; border-radius: 12px; margin-bottom: 8px; border: 1px solid #f1f2f6; overflow: hidden; }
         .faq-question { padding: 12px 15px; font-size: 13px; color: #1e272e; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #fff; user-select: none;}
@@ -396,7 +405,6 @@
         <div class="controls-wrapper">
             <div id="music-btn" class="music-control">🔊</div>
             <div id="lang-btn" class="lang-control">عەرەبی</div>
-            <button id="go-to-order-btn" class="order-now-btn">ئێستە داوا بکە</button>
         </div>
 
         <video class="bg-video" autoplay loop muted playsinline poster="poster2.jpg">
@@ -407,7 +415,7 @@
             <h1 class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم</h1>
             <br>
             <p class="quran-verse">
-                وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا<br>
+                وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْکُنُوا إِلَيْهَا<br>
                 وجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ
                 إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
             </p>
@@ -434,7 +442,7 @@
                 <p id="det-time"><strong>کاتژمێر:</strong> ٧:٠٠ی ئێوارە</p>
                 <p id="det-location"><strong>شوێن:</strong> سلێمانی - سەرچنار</p>
 
-                <a href="https://maps.app.goo.gl/q8WhY6UVJJkHYHXw9?g_st=ipc" target="_blank" class="map-link-wrapper">
+                <a href="https://maps.google.com" target="_blank" class="map-link-wrapper">
                     <img src="holl.jpg" class="map-img" alt="Location Map">
                 </a>
                 <p id="map-hint" style="font-size: 15px; color: #000000; margin-top: 5px; font-weight: bold;">بۆ بینینی شوێنی هۆڵەکە لەسەر گووگڵ ماپ- کلیک لە وێنەکەی سەرەوە بکە</p>
@@ -456,7 +464,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label id="lbl-msg" for="message">نامەی پیرۆزبایی (ئارەزوومەندانا):</label>
+                    <label id="lbl-msg" for="message">نامەی پیرۆزبایی (ئارەزومەندانە):</label>
                     <input type="text" id="message" placeholder="نامەیەکی کورت بنووسە...">
                 </div>
                 <button id="send-whatsapp" class="submit-btn">💬 <span id="lbl-btn-text">ناردن لە ڕێگەی واتسئەپ</span></button>
@@ -487,17 +495,17 @@
                     <div class="form-field">
                         <label>قاڵبی دڵخواز (ئارەزوومەندانە)</label>
                         <select id="order-template">
-                            <option value="دواتر هەڵدەبژێرم">دواتر هەڵدەبژێرم</option>
-                            <option value="قاڵبی کلاسیک">قاڵبی کلاسیک</option>
-                            <option value="قاڵبی مۆدێرن">قاڵبی مۆدێرن</option>
+                            <option value="تەخەڕوج">تەخەڕوج</option>
+                            <option value="خەنەبەندان">خەنەبەندان</option>
+                            <option value="شەکراو خواردنەوە">شەکراو خواردنەوە</option>
                         </select>
                     </div>
                     <div class="form-field">
                         <label>بۆنە</label>
                         <select id="order-event">
-                            <option value="زەماوەند">زەماوەند</option>
-                            <option value="مـارەبڕین">مـارەبڕین</option>
-                            <option value="شەوی خەنە">شەوی خەنە</option>
+                            <option value="تەخەڕوج">تەخەڕوج</option>
+                            <option value="شەکراو خواردنەوە">شەکراو خواردنەوە</option>
+                            <option value="خەنەبەندان">خەنەبەندان</option>
                         </select>
                     </div>
                 </div>
@@ -507,11 +515,11 @@
                     <textarea id="order-notes" rows="2" placeholder="هەر وردەکارییەک کە دەتەوێت زیادی بکەیت..."></textarea>
                 </div>
 
-                <div class="form-field">
-                    <label>کۆدی داشکاندن (ئارەزوومەندانە)</label>
+                <div class="form-field" style="margin-bottom: 12px;">
+                    <label>کۆدی داشکاندن</label>
                     <div class="coupon-container">
-                        <button class="coupon-btn" id="apply-coupon">جێبەجێکردن</button>
-                        <input type="text" id="order-coupon" style="flex: 1;" placeholder="نموونی: EID2026">
+                        <input type="text" id="order-coupon" placeholder="EID2026">
+                        <button type="button" id="apply-coupon" class="coupon-btn">جێبەجێکردن</button>
                     </div>
                 </div>
 
@@ -522,7 +530,7 @@
                     <span class="badge-discount" id="discount-badge">١٥,٠٠٠ قازانجام کرد 🎉</span>
                 </div>
 
-                <p class="hint-text">پارە دەدەیت دوای ئەوەی کارتەکەت دەبینیت و بە دڵتە 🤝</p>
+                <p class="hint-text">پارە دەدەیت دوای ئەوەی کارتەکەت دەبینیت و بە دڵت دەبێت</p>
 
                 <div class="btn-row">
                     <button id="btn-submit-whatsapp" class="btn-whatsapp-order">له ڕێی واتسئەپ 💬</button>
@@ -559,9 +567,36 @@
                     <div class="grid-card">
                         <span class="step-num">٤</span>
                         <div class="icon-circle bg-purple">✅</div>
-                        <h4 class="card-title">دڵنیا دەکەینەوە</h4>
+                        <h4 class="card-title">دڵنیات دەکەینەوە</h4>
                         <p class="card-desc">و لیستی ئامادەبووان ئامادە بۆت دێت.</p>
                     </div>
+                </div>
+            </div>
+
+            <div class="portfolio-section">
+                <h2 class="how-title">نموونەی کارتەکانمان</h2>
+                <p class="how-sub">کلیک لە هەر یەکێکیان بکە بۆ بینینی دیزاینەکەی</p>
+                
+                <div class="portfolio-grid">
+                    <a href="#" class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=400" class="portfolio-img" alt="قالب کلاسیک">
+                        <span class="portfolio-name"> شەکراو خواردنەوە </span>
+                    </a>
+                    
+                    <a href="#" class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400" class="portfolio-img" alt="قالب مودرن">
+                        <span class="portfolio-name"> خەنەبەندان</span>
+                    </a>
+
+                    <a href="graduation.html" target="_blank" class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400" class="portfolio-img" alt="قالب فخم">
+                        <span class="portfolio-name"> تەخەڕوج</span>
+                    </a>
+
+                    <a href="#" class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400" class="portfolio-img" alt="قالب فیدیو">
+                        <span class="portfolio-name"> کارتۆنی پۆستەر </span>
+                    </a>
                 </div>
             </div>
 
@@ -613,17 +648,34 @@
         var isPlaying = false;
         var currentLang = "ku"; 
 
+        var gateScreen = document.getElementById('gate-screen');
+        var openBtn = document.getElementById('open-btn');
         var mainContent = document.getElementById('main-content');
         var orderScreen = document.getElementById('order-screen');
-        var goToOrderBtn = document.getElementById('go-to-order-btn');
         var backToCardBtn = document.getElementById('back-to-card');
         var scrollContainer = document.getElementById('scroll-container');
 
-        // کاتێک شاشەی داواکاری دەکرێتەوە
-        goToOrderBtn.addEventListener('click', function() {
-            mainContent.classList.add('hidden');
-            orderScreen.classList.remove('hidden');
-            triggerScrollAnimation(); // لێدانی ئەنیمەیشن
+        // کردنەوەی شاشەی سەرەکی
+        openBtn.addEventListener('click', function() {
+            gateScreen.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            mainContent.style.opacity = 1;
+            music.play().then(() => {
+                isPlaying = true;
+                musicBtn.innerText = "🔊";
+            }).catch(e => console.log("Audio play blocked"));
+        });
+
+        // کۆنتڕۆڵی میوزیک
+        musicBtn.addEventListener('click', function() {
+            if(isPlaying) {
+                music.pause();
+                musicBtn.innerText = "🔇";
+            } else {
+                music.play();
+                musicBtn.innerText = "🔊";
+            }
+            isPlaying = !isPlaying;
         });
 
         backToCardBtn.addEventListener('click', function() {
@@ -631,7 +683,6 @@
             mainContent.classList.remove('hidden');
         });
 
-        // 1. ئەنیمەیشنی هێواش کاتێک دادەبەزێتە خوارەوە
         scrollContainer.addEventListener('scroll', triggerScrollAnimation);
         
         function triggerScrollAnimation() {
@@ -644,11 +695,11 @@
             });
         }
 
-        // 2. کۆدی داشکاندنی ڕاستەقینە (Live Coupon Code)
+        // جێبەجێکردنی کۆدی داشکاندن
         document.getElementById('apply-coupon').addEventListener('click', function() {
             var couponInput = document.getElementById('order-coupon').value.trim();
             if(couponInput.toUpperCase() === "EID2026") {
-                if(navigator.vibrate) navigator.vibrate(100); // لەرینەوەی مۆبایل بۆ سەرکەوتن
+                if(navigator.vibrate) navigator.vibrate(100); 
                 document.getElementById('old-price-val').innerText = "٥٠,٠٠٠";
                 document.getElementById('new-price-val').innerText = "٣٥,٠٠٠ د.ع";
                 document.getElementById('discount-badge').innerText = "کۆدی داشکاندن جێبەجێ کرا! 🎉";
@@ -659,7 +710,6 @@
             }
         });
 
-        // 3. کۆدی کردنەوەی پرسیارە باوەکان (Accordion)
         var faqQuestions = document.querySelectorAll('.faq-question');
         faqQuestions.forEach(function(q) {
             q.addEventListener('click', function() {
@@ -667,192 +717,6 @@
                 item.classList.toggle('active');
             });
         });
-
-        // وەرگێڕان و کاتژمێرە کۆنەکە وەک خۆی پارێزراوە
-        const translations = {
-            ku: {
-                langBtn: "عەرەبی",
-                welcome: "بە ڕێزەوە بانگهێشتتان دەکەین بۆ ئامادەبوون لە ئاهەنگی هاوسەرگیریمان",
-                countdownTitle: "لەم ڕۆژە پڕ لە خۆشییەدا کە دڵەکانمان دەبن بە یەک، چاوەڕوانی ئامادەبوونی ئێوەی ئازیزین بۆ ئەوەی پێکەوە سەرەتای جوانترین چیرۆکی ژیانمان دەستپێبکەین.",
-                days: "ڕۆژ", hours: "کاتژمێر", minutes: "خولەک", seconds: "چرکە",
-                date: "<strong>ڕێککەوت:</strong> هەینی، ١٨ی کانوونی یەکەم",
-                time: "<strong>کاتژمێر:</strong> ٧:٠٠ی ئێوارە",
-                location: "<strong>شوێن:</strong> سلێمانی - سەرچنار",
-                mapHint: "بۆ بینینی شوێنی هۆڵەکە لەسەر گووگڵ ماپ- کلیک لە وێنەکەی سەرەوە بکە",
-                rsvpTitle: "پشتڕاستکردنەوەی ئامادەبوون و پیرۆزبایی",
-                lblName: "ناوی بەڕێزتان:",
-                namePlaceholder: "ناوی خۆت بنووسە...",
-                lblAsk: "ئایا ئامادە دەبیت?",
-                optYes: "بەڵێ، بەخۆشحاڵییەوە ئامادە دەبم 😍",
-                optNo: "داوای لێبوردن دەکەم, ناتوانم ئامادەبم 😔",
-                lblMsg: "نامەی پیرۆزبایی (ئارەزوومەندانا):",
-                msgPlaceholder: "نامەیەکی کورت بنووسە...",
-                btnText: "ناردن لە ڕێگەی واتسئەپ",
-                alertName: "تکایە ناوی خۆت بنووسە پێش ناردن!",
-                weddingStarted: "ئاهەنگەکە دەستی پێکردووە!"
-            },
-            ar: {
-                langBtn: "کوردی",
-                welcome: "نتشرف بدعوتكم لحضور حفل زفافنا البهيج",
-                countdownTitle: "في هذا اليوم السعيد الذي تجتمع فيه قلوبنا، ننتظر حضوركم الغالي لنبدأ معاً أجمل فصول حياتنا.",
-                days: "أيام", hours: "ساعة", minutes: "دقيقة", seconds: "ثانية",
-                date: "<strong>التاريخ:</strong> الجمعة، ١٨ كانون الأول",
-                time: "<strong>الوقت:</strong> ٧:٠٠ مساءً",
-                location: "<strong>المكان:</strong> السليمانية - سرجنار",
-                mapHint: "لمشاهدة موقع القاعة على قوقل ماب - اضغط على الصورة أعلاه",
-                rsvpTitle: "تأكيد الحضور والتهاني",
-                lblName: "إسم الحضور الكريم:",
-                namePlaceholder: "اكتب اسمك هنا...",
-                lblAsk: "هل ستشرفنا بحضورك？",
-                optYes: "نعم، بكل سرور سأحضر 😍",
-                optNo: "أعتذر، لا أستطيع الحضور 😔",
-                lblMsg: "رسالة تهنئة (اختياري):",
-                msgPlaceholder: "اكتب تهنئة قصيرة...",
-                btnText: "إرسال عبر الواتساب",
-                alertName: "يرجى كتابة اسمك قبل الإرسال!",
-                weddingStarted: "لقد بدأ الحفل الآن!"
-            }
-        };
-
-        langBtn.addEventListener('click', function() {
-            currentLang = (currentLang === "ku") ? "ar" : "ku";
-            var t = translations[currentLang];
-
-            langBtn.innerText = t.langBtn;
-            document.getElementById('welcome-text').innerHTML = t.welcome;
-            document.getElementById('countdown-title').innerText = t.countdownTitle;
-            document.getElementById('lbl-days').innerText = t.days;
-            document.getElementById('lbl-hours').innerText = t.hours;
-            document.getElementById('lbl-minutes').innerText = t.minutes;
-            document.getElementById('lbl-seconds').innerText = t.seconds;
-            document.getElementById('det-date').innerHTML = t.date;
-            document.getElementById('det-time').innerHTML = t.time;
-            document.getElementById('det-location').innerHTML = t.location;
-            document.getElementById('map-hint').innerText = t.mapHint;
-            document.getElementById('rsvp-title').innerText = t.rsvpTitle;
-            document.getElementById('lbl-name').innerText = t.lblName;
-            document.getElementById('guest-name').placeholder = t.namePlaceholder;
-            document.getElementById('lbl-ask').innerText = t.lblAsk;
-            
-            var optYes = document.getElementById('opt-yes');
-            var optNo = document.getElementById('opt-no');
-            optYes.innerText = t.optYes;
-            optYes.value = currentLang === "ku" ? "بەڵێ، بەخۆشحاڵییەوە ئامادە دەبم" : "نعم، بكل سرور سأحضر";
-            optNo.innerText = t.optNo;
-            optNo.value = currentLang === "ku" ? "داوای لێبوردن دەکەم، ناتوانم ئامادەبم" : "أعتذر، لا أستطيع الحضور";
-
-            document.getElementById('lbl-msg').innerText = t.lblMsg;
-            document.getElementById('message').placeholder = t.msgPlaceholder;
-            document.getElementById('lbl-btn-text').innerText = t.btnText;
-        });
-
-        document.getElementById('open-btn').addEventListener('click', function() {
-            var gateScreen = document.getElementById('gate-screen');
-            var mainContent = document.getElementById('main-content');
-
-            gateScreen.style.opacity = '0';
-            
-            setTimeout(function() {
-                gateScreen.classList.add('hidden');
-                mainContent.classList.remove('hidden');
-                setTimeout(function() {
-                    mainContent.style.opacity = '1';
-                }, 50);
-            }, 800);
-
-            music.play().then(function() {
-                isPlaying = true;
-                musicBtn.innerText = "🔊";
-            }).catch(function(e) { 
-                isPlaying = false;
-                musicBtn.innerText = "🔇";
-            });
-        });
-
-        musicBtn.addEventListener('click', function() {
-            if (isPlaying) {
-                music.pause();
-                musicBtn.innerText = "🔇";
-                isPlaying = false;
-            } else {
-                music.play().then(function() {
-                    musicBtn.innerText = "🔊";
-                    isPlaying = true;
-                }).catch(function() {
-                    alert("فایلی مۆسیقاکە لادەست نییە!");
-                });
-            }
-        });
-
-        document.getElementById('send-whatsapp').addEventListener('click', function() {
-            var name = document.getElementById('guest-name').value.trim();
-            var status = document.getElementById('attendance').value;
-            var msg = document.getElementById('message').value.trim();
-            var t = translations[currentLang];
-
-            if (name === "") {
-                alert(t.alertName);
-                return;
-            }
-
-            var phoneNumber = "9647701915449"; 
-            var text = currentLang === "ku" ? 
-                "سڵاو کاک عەلی و دادە منار،\n" + "من: *" + name + "*\n" + "وەڵامی بانگهێشت: *" + status + "*\n" :
-                "مرحباً كاك علي و دادة منار،\n" + "أنا: *" + name + "*\n" + "حالة الحضور: *" + status + "*\n";
-            
-            if (msg !== "") {
-                text += (currentLang === "ku" ? "نامەی پیرۆزبایی: _" : "رسالة التهنئة: _") + msg + "_";
-            }
-
-            window.open("https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(text), '_blank');
-        });
-
-        // بەشی فۆڕمی نوێی کڕینی کارت
-        document.getElementById('btn-submit-whatsapp').addEventListener('click', sendOrder);
-        document.getElementById('btn-submit-direct').addEventListener('click', sendOrder);
-
-        function sendOrder() {
-            var name = document.getElementById('order-name').value.trim();
-            var phone = document.getElementById('order-phone').value.trim();
-            var event = document.getElementById('order-event').value;
-            var template = document.getElementById('order-template').value;
-            var notes = document.getElementById('order-notes').value.trim();
-            var coupon = document.getElementById('order-coupon').value.trim();
-
-            if (name === "" || phone === "") {
-                alert("تکایە ناو و ژمارەی مۆبایل بە دروستی پڕ بکەرەوە!");
-                return;
-            }
-
-            var phoneNumber = "9647701915449"; 
-            var text = "🛍️ *داواکاری نوێی کارتی دیجیتاڵی* 🛍️\n\n" +
-                       "👤 ناوی کڕیار: " + name + "\n" +
-                       "📞 ژمارەی مۆبایل: " + phone + "\n" +
-                       "🎉 جۆری بۆنە: " + event + "\n" +
-                       "🎨 قاڵبی دڵخواز: " + template + "\n";
-            if(notes !== "") text += "📝 تێبینی: " + notes + "\n";
-            if(coupon !== "") text += "🎟️ کۆدی داشکاندن: " + coupon + "\n";
-            text += "\n💰 نرخی ڕێککەوتوو: ٣٥,٠٠٠ د.ع";
-
-            window.open("https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(text), '_blank');
-        }
-
-        const weddingDate = new Date("December 18, 2026 19:00:00").getTime();
-        const timerInterval = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-
-            if (distance > 0) {
-                document.getElementById("days").innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
-                document.getElementById("hours").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-                document.getElementById("minutes").innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-                document.getElementById("seconds").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-            } else {
-                clearInterval(timerInterval);
-                var t = translations[currentLang];
-                document.querySelector(".timer").innerHTML = "<h4 style='color:#000000; margin:0; font-size:15px;'>" + t.weddingStarted + "</h4>";
-            }
-        }, 1000);
     </script>
 </body>
 </html>
