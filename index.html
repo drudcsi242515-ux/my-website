@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>db`</title>
+    <title>DB-my-web</title>
     
-    <!-- لێرەدا کێشی فۆنتەکان بە تەواوی بۆ 700 کە تۆخە جێگیر کراوە -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@700&family=Vazirmatn:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@700&family=Vazirmatn:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Vazirmatn', sans-serif;
-            font-weight: 700; /* هەموو لاپەڕەکە دەکات بە تۆخ */
+            font-weight: 700; 
             background-color: #f5eef8;
             display: flex;
             justify-content: center;
@@ -89,11 +88,18 @@
             text-align: center;
         }
 
-        .music-control {
+        /* 🎵 دوگمەکانی سەرەوە */
+        .controls-wrapper {
             position: absolute;
             top: 15px;
             left: 15px;
             z-index: 10;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .music-control, .lang-control {
             background: rgba(255, 255, 255, 0.8);
             border: 1px solid #000000;
             border-radius: 50%;
@@ -104,8 +110,21 @@
             align-items: center;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            font-size: 15px;
-            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .order-now-btn {
+            background: linear-gradient(45deg, #ff6b81, #ff4757);
+            color: white;
+            border: 1px solid #000000;
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            font-family: inherit;
         }
 
         .bismillah {
@@ -122,7 +141,7 @@
         .quran-verse {
             font-family: 'Cairo', sans-serif;
             font-size: 14px; 
-            font-weight: 700; /* ئایەتەکە بە تەواوی تۆخە */
+            font-weight: 700; 
             color: #000000;
             line-height: 1.8;
             margin: 8px 0 15px 0;
@@ -202,15 +221,9 @@
         .map-link-wrapper {
             display: block;
             margin-top: 8px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .map-link-wrapper:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
         }
 
         .map-img {
@@ -274,15 +287,91 @@
             font-size: 15px;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s;
-            font-family: inherit;
             margin-top: 5px;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
+            font-family: inherit;
         }
+
+        /* ----------------------------------------
+           ✨ ستایلی شاشەی دووەم - فۆڕم و گۆڕانکارییەکان
+        ------------------------------------------- */
+        .order-screen-container {
+            height: 100%;
+            overflow-y: auto;
+            background: #fffaf7;
+            padding: 20px 15px;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        .header-title { text-align: center; font-size: 24px; color: #1e272e; margin-bottom: 5px; font-weight: 700;}
+        .header-sub { text-align: center; font-size: 13px; color: #718093; margin-bottom: 20px; font-weight: 500;}
+        .form-box { background: #ffffff; border-radius: 20px; padding: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); border: 1px solid #f1f2f6; }
+        .form-row { display: flex; gap: 10px; margin-bottom: 12px; }
+        .form-field { flex: 1; display: flex; flex-direction: column; text-align: right; }
+        .form-field label { font-size: 13px; color: #2f3640; margin-bottom: 5px; font-weight: 700;}
+        .form-field input, .form-field select, .form-field textarea {
+            width: 100%; padding: 10px; border: 1px solid #dcdde1; border-radius: 12px; box-sizing: border-box; background-color: #fbfbfb; font-family: inherit; font-size: 13px; font-weight: 500;
+        }
+        .coupon-container { display: flex; gap: 5px; }
+        .coupon-btn { background: #2f3640; border: none; color: #ffffff; border-radius: 12px; padding: 0 15px; font-size: 13px; cursor: pointer; font-family: inherit; font-weight: 700; transition: 0.2s;}
+        .coupon-btn:active { transform: scale(0.95); }
+        
+        .price-tag {
+            background: #fff8e7; border-radius: 12px; padding: 10px; text-align: center; font-size: 13px; margin-top: 12px; display: flex; justify-content: center; align-items: center; gap: 8px;
+        }
+        .price-old { text-decoration: line-through; color: #a0a0a0; }
+        .price-new { color: #d63031; font-weight: bold; }
+        .badge-discount { background: #ffb84d; color: #000; padding: 2px 6px; border-radius: 20px; font-size: 11px; }
+        .hint-text { text-align: center; font-size: 12px; color: #e67e22; margin: 12px 0; font-weight: 500; }
+        
+        .btn-row { display: flex; gap: 10px; margin-top: 15px; }
+        .btn-submit-order { background: #ff4757; color: white; border: none; border-radius: 25px; padding: 12px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; flex: 1; }
+        .btn-whatsapp-order { background: #25D366; color: white; border: none; border-radius: 25px; padding: 12px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; flex: 1; display: flex; justify-content: center; align-items: center; gap: 5px; }
+        .back-btn { background: none; border: none; color: #718093; cursor: pointer; font-size: 13px; margin-top: 15px; font-family: inherit; text-decoration: underline; display: block; margin: 15px auto 0 auto;}
+
+        /* 📋 بەشی "چۆن کار دەکەین؟" */
+        .how-we-work { margin-top: 35px; text-align: center; }
+        .how-title { font-size: 24px; color: #1e272e; margin-bottom: 5px; font-weight: 700; }
+        .how-sub { font-size: 14px; color: #718093; margin-bottom: 25px; font-weight: 500; }
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        
+        /* 1. ئەنیمەیشنی هێواش بۆ سەرکەوتن */
+        .grid-card { 
+            background: #ffffff; border-radius: 20px; padding: 20px 10px; border: 1px solid #f1f2f6; box-shadow: 0 4px 15px rgba(0,0,0,0.02); position: relative; text-align: center; 
+            opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out;
+        }
+        .grid-card.animate-show { opacity: 1; transform: translateY(0); }
+        
+        .step-num { position: absolute; top: 12px; right: 15px; font-size: 16px; color: #dcdde1; font-weight: 500; }
+        .icon-circle { width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 12px auto; color: white; font-size: 20px; }
+        
+        .bg-pink { background-color: #ff4757; }
+        .bg-teal { background-color: #1dd1a1; }
+        .bg-blue { background-color: #54a0ff; }
+        .bg-purple { background-color: #5f27cd; }
+
+        .card-title { font-size: 15px; color: #1e272e; margin: 0 0 5px 0; font-weight: 700; }
+        .card-desc { font-size: 12px; color: #718093; margin: 0; font-weight: 500; line-height: 1.4; }
+
+        /* 💬 بەشی ڕای کڕیاران (Reviews) */
+        .reviews-section { margin-top: 40px; text-align: right; }
+        .review-box { background: #ffffff; border-radius: 15px; padding: 12px 15px; margin-bottom: 12px; border: 1px solid #f1f2f6; display: flex; gap: 10px; align-items: flex-start; }
+        .review-avatar { background: #ffe4e6; color: #ff4757; width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; flex-shrink: 0; font-weight: bold;}
+        .review-text { font-size: 12px; color: #2f3640; font-weight: 500; margin: 0; line-height: 1.4;}
+        .review-name { font-size: 11px; color: #a0a0a0; margin-top: 4px; display: block;}
+
+        /* ❓ بەشی پرسیارە باوەکان (FAQ) */
+        .faq-section { margin-top: 40px; text-align: right; }
+        .faq-item { background: #ffffff; border-radius: 12px; margin-bottom: 8px; border: 1px solid #f1f2f6; overflow: hidden; }
+        .faq-question { padding: 12px 15px; font-size: 13px; color: #1e272e; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #fff; user-select: none;}
+        .faq-answer { padding: 0 15px; max-height: 0; overflow: hidden; transition: all 0.3s ease-out; font-size: 12px; color: #718093; font-weight: 500; line-height: 1.5; }
+        .faq-item.active .faq-answer { padding: 12px 15px; max-height: 100px; border-top: 1px solid #fcfcfc; }
+        .faq-icon { transition: transform 0.3s; font-size: 11px;}
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
 
         @keyframes pulse {
             0% { transform: scale(1); }
@@ -304,78 +393,358 @@
 
     <div id="main-content" class="screen hidden">
         
-        <div id="music-btn" class="music-control">🔊</div>
+        <div class="controls-wrapper">
+            <div id="music-btn" class="music-control">🔊</div>
+            <div id="lang-btn" class="lang-control">عەرەبی</div>
+            <button id="go-to-order-btn" class="order-now-btn">ئێستە داوا بکە</button>
+        </div>
 
         <video class="bg-video" autoplay loop muted playsinline poster="poster2.jpg">
             <source src="background.mp4" type="video/mp4">
         </video>
 
         <div class="overlay-content">
-            <h1 class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</h1>
-            
+            <h1 class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم</h1>
+            <br>
             <p class="quran-verse">
                 وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا<br>
-                وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ<br>
+                وجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ
                 إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
             </p>
 
             <h1 class="names">عەلی & منار</h1>
-            <p class="welcome-text">بە ڕێزەوە بانگهێشتتان دەکەین بۆ ئامادەبوون لە ئاهەنگی هاوسەرگیریمان</p>
+            <p class="welcome-text" id="welcome-text">بە ڕێزەوە بانگهێشتتان دەکەین بۆ ئامادەبوون لە ئاهەنگی هاوسەرگیریمان</p>
 
             <hr>
 
             <div class="countdown">
-                <h3>لەم ڕۆژە پڕ لە خۆشییەدا کە دڵەکانمان دەبن بە یەک، چاوەڕوانی ئامادەبوونی ئێوەی ئازیزین بۆ ئەوەی پێکەوە سەرەتای جوانترین چیرۆکی ژیانمان دەستپێبکەین.</h3>
+                <h3 id="countdown-title">لەم ڕۆژە پڕ لە خۆشییەدا کە دڵەکانمان دەبن بە یەک، چاوەڕوانی ئامادەبوونی ئێوەی ئازیزین بۆ ئەوەی پێکەوە سەرەتای جوانترین چیرۆکی ژیانمان دەستپێبکەین.</h3>
                 <div class="timer">
-                    <div><span id="days">00</span> ڕۆژ</div>
-                    <div><span id="hours">00</span> کاتژمێر</div>
-                    <div><span id="minutes">00</span> خولەک</div>
-                    <div><span id="seconds">00</span> چرکە</div>
+                    <div><span id="days">00</span> <span id="lbl-days">ڕۆژ</span></div>
+                    <div><span id="hours">00</span> <span id="lbl-hours">کاتژمێر</span></div>
+                    <div><span id="minutes">00</span> <span id="lbl-minutes">خولەک</span></div>
+                    <div><span id="seconds">00</span> <span id="lbl-seconds">چرکە</span></div>
                 </div>
             </div>
 
             <hr>
 
             <div class="details">
-                <p><strong>ڕێککەوت:</strong> هەینی، ١٨ی کانوونی یەکەم</p>
-                <p><strong>کاتژمێر:</strong> ٧:٠٠ی ئێوارە</p>
-                <p><strong>شوێن:</strong> سلێمانی - سەرچنار </p>
+                <p id="det-date"><strong>ڕێککەوت:</strong> هەینی، ١٨ی کانوونی یەکەم</p>
+                <p id="det-time"><strong>کاتژمێر:</strong> ٧:٠٠ی ئێوارە</p>
+                <p id="det-location"><strong>شوێن:</strong> سلێمانی - سەرچنار</p>
 
                 <a href="https://maps.app.goo.gl/q8WhY6UVJJkHYHXw9?g_st=ipc" target="_blank" class="map-link-wrapper">
-                    <img src="holl.jpg" class="map-img" alt="شوێنی هۆڵی ئۆسکار لەسەر نەخشە">
+                    <img src="holl.jpg" class="map-img" alt="Location Map">
                 </a>
-                <p style="font-size: 15px; color: #000000; margin-top: 5px; font-weight: bold;">بۆ بینینی شوێنی هۆڵەکە لەسەر گووگڵ ماپ- کلیک لە وێنەکەی سەرەوە بکە</p>
+                <p id="map-hint" style="font-size: 15px; color: #000000; margin-top: 5px; font-weight: bold;">بۆ بینینی شوێنی هۆڵەکە لەسەر گووگڵ ماپ- کلیک لە وێنەکەی سەرەوە بکە</p>
             </div>
 
             <hr>
 
             <div class="rsvp-section">
-                <h3>پشتڕاستکردنەوەی ئامادەبوون و پیرۆزبایی</h3>
+                <h3 id="rsvp-title">پشتڕاستکردنەوەی ئامادەبوون و پیرۆزبایی</h3>
                 <div class="form-group">
-                    <label for="guest-name">ناوی بەڕێزتان:</label>
+                    <label id="lbl-name" for="guest-name">ناوی بەڕێزتان:</label>
                     <input type="text" id="guest-name" placeholder="ناوی خۆت بنووسە...">
                 </div>
                 <div class="form-group">
-                    <label for="attendance">ئایا ئامادە دەبیت?</label>
+                    <label id="lbl-ask" for="attendance">ئایا ئامادە دەبیت?</label>
                     <select id="attendance">
-                        <option value="بەڵێ، بەخۆشحاڵییەوە ئامادە دەبم">بەڵێ، بەخۆشحاڵییەوە ئامادە دەبم 😍</option>
-                        <option value="داوای لێبوردن دەکەم، ناتوانم ئامادەبم">داوای لێبوردن دەکەم، ناتوانم ئامادەبم 😔</option>
+                        <option id="opt-yes" value="بەڵێ، بەخۆشحاڵییەوە ئامادە دەبم">بەڵێ، بەخۆشحاڵییەوە ئامادە دەبم 😍</option>
+                        <option id="opt-no" value="داوای لێبوردن دەکەم، ناتوانم ئامادەبم">داوای لێبوردن دەکەم، ناتوانم ئامادەبم 😔</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="message">نامەی پیرۆزبایی (ئارەزوومەندانا):</label>
+                    <label id="lbl-msg" for="message">نامەی پیرۆزبایی (ئارەزوومەندانا):</label>
                     <input type="text" id="message" placeholder="نامەیەکی کورت بنووسە...">
                 </div>
-                <button id="send-whatsapp" class="submit-btn">💬 ناردن لە ڕێگەی واتسئەپ</button>
+                <button id="send-whatsapp" class="submit-btn">💬 <span id="lbl-btn-text">ناردن لە ڕێگەی واتسئەپ</span></button>
             </div>
             
-            <div style="height: 20px;"></div> </div>
+            <div style="height: 20px;"></div> 
+        </div>
+    </div>
+
+    <div id="order-screen" class="screen hidden">
+        <div class="order-screen-container" id="scroll-container">
+            <h2 class="header-title">ئێستە کارتەکەت داوا بکە</h2>
+            <p class="header-sub">وردەکارییەکان پڕ بکەرەوە یان ڕاستەوخۆ لە واتسئەپ پەیوەندیمان پێوە بکە</p>
+
+            <div class="form-box">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>ژمارەی مۆبایل</label>
+                        <input type="text" id="order-phone" placeholder="07XXXXXXXXX">
+                    </div>
+                    <div class="form-field">
+                        <label>ناوت</label>
+                        <input type="text" id="order-name" placeholder="نموونی: نور ئەحمەد">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>قاڵبی دڵخواز (ئارەزوومەندانە)</label>
+                        <select id="order-template">
+                            <option value="دواتر هەڵدەبژێرم">دواتر هەڵدەبژێرم</option>
+                            <option value="قاڵبی کلاسیک">قاڵبی کلاسیک</option>
+                            <option value="قاڵبی مۆدێرن">قاڵبی مۆدێرن</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label>بۆنە</label>
+                        <select id="order-event">
+                            <option value="زەماوەند">زەماوەند</option>
+                            <option value="مـارەبڕین">مـارەبڕین</option>
+                            <option value="شەوی خەنە">شەوی خەنە</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-field" style="margin-bottom: 12px;">
+                    <label>تێبینییەکان (ئارەزوومەندانە)</label>
+                    <textarea id="order-notes" rows="2" placeholder="هەر وردەکارییەک کە دەتەوێت زیادی بکەیت..."></textarea>
+                </div>
+
+                <div class="form-field">
+                    <label>کۆدی داشکاندن (ئارەزوومەندانە)</label>
+                    <div class="coupon-container">
+                        <button class="coupon-btn" id="apply-coupon">جێبەجێکردن</button>
+                        <input type="text" id="order-coupon" style="flex: 1;" placeholder="نموونی: EID2026">
+                    </div>
+                </div>
+
+                <div class="price-tag">
+                    <span>نرخ:</span>
+                    <span class="price-old" id="old-price-val">٥٠,٠٠٠</span>
+                    <span class="price-new" id="new-price-val">٣٥,٠٠٠ د.ع</span>
+                    <span class="badge-discount" id="discount-badge">١٥,٠٠٠ قازانجام کرد 🎉</span>
+                </div>
+
+                <p class="hint-text">پارە دەدەیت دوای ئەوەی کارتەکەت دەبینیت و بە دڵتە 🤝</p>
+
+                <div class="btn-row">
+                    <button id="btn-submit-whatsapp" class="btn-whatsapp-order">له ڕێی واتسئەپ 💬</button>
+                    <button id="btn-submit-direct" class="btn-submit-order">داواکارییەکە بنێرە 🚀</button>
+                </div>
+            </div>
+
+            <div class="how-we-work">
+                <h2 class="how-title">چۆن کار دەکەین؟</h2>
+                <p class="how-sub">چوار هەنگاو و کارتەکەت دەگاتە دەستت</p>
+                
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <span class="step-num">١</span>
+                        <div class="icon-circle bg-pink">✉️</div>
+                        <h4 class="card-title">داوا بکە</h4>
+                        <p class="card-desc">وردەکارییەکانی بۆنەکەت بە یەک کلیک بنێرە.</p>
+                    </div>
+
+                    <div class="grid-card">
+                        <span class="step-num">٢</span>
+                        <div class="icon-circle bg-teal">🎨</div>
+                        <h4 class="card-title">بۆت دیزاین دەکەین</h4>
+                        <p class="card-desc">کارتەکەت بەو قاڵبە ئامادە دەکەین کە هەڵتبژاردووە.</p>
+                    </div>
+
+                    <div class="grid-card">
+                        <span class="step-num">٣</span>
+                        <div class="icon-circle bg-blue">🚀</div>
+                        <h4 class="card-title">بڵاوی بکەرەوە</h4>
+                        <p class="card-desc">یەک لینک بۆ هەموو میوانەکان.</p>
+                    </div>
+
+                    <div class="grid-card">
+                        <span class="step-num">٤</span>
+                        <div class="icon-circle bg-purple">✅</div>
+                        <h4 class="card-title">دڵنیا دەکەینەوە</h4>
+                        <p class="card-desc">و لیستی ئامادەبووان ئامادە بۆت دێت.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reviews-section">
+                <h2 class="how-title" style="text-align:center;">ڕای کڕیارانمان</h2>
+                <p class="how-sub" style="text-align:center;">متمانەی ئێوە هێزی ئێمەیە</p>
+
+                <div class="review-box">
+                    <div class="review-avatar">س</div>
+                    <div>
+                        <p class="review-text">دەستان خۆش بێت بە ڕاستی زۆر شاز و خێرا بوو، میوانەکانمان سەریان سوڕمابوو بە دیزاینەکەی! 😍</p>
+                        <span class="review-name">سۆژین ئەحمەد - پێنجوێن</span>
+                    </div>
+                </div>
+
+                <div class="review-box">
+                    <div class="review-avatar">م</div>
+                    <div>
+                        <p class="review-text">زۆر شەکور و ڕێک و پێکە. گۆڕانکاری کاتەکەم بۆ ناردن دەستبەجێ بۆیان چاک کردمەوە. ماندوو نەبن.</p>
+                        <span class="review-name">میدیا عومەر - سلێمانی</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h2 class="how-title" style="text-align:center;">پرسیارە باوەکان</h2>
+                <p class="how-sub" style="text-align:center;">ئەو شتانەی کە زۆرجار کڕیاران دەپرسن</p>
+
+                <div class="faq-item">
+                    <div class="faq-question">کارتەکە چەند کاتی دەوێت بۆ ئامادەبوون؟ <span class="faq-icon">▼</span></div>
+                    <div class="faq-answer">کارتەکەت کەمتر لە ٢٤ کاتژمێردا بە تەواوی ئامادە دەبێت و پێش پارەدان نیشانت دەدرێت.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">دەتوانم دوای بڵاوکردنەوە زانیارییەکان بگۆڕم؟ <span class="faq-icon">▼</span></div>
+                    <div class="faq-answer">بەڵێ بێگومان! گۆڕینی هەر زانیارییەک (وەک کات، شوێن، یان ناوەکان) دوای کڕینیش بۆ هەمیشە بێبەرامبەرە.</div>
+                </div>
+            </div>
+
+            <button id="back-to-card" class="back-btn">گەڕانەوە بۆ بینینی کارتەکە</button>
+            <div style="height: 30px;"></div>
+        </div>
     </div>
 
     <script>
         var music = document.getElementById('bg-music');
         var musicBtn = document.getElementById('music-btn');
+        var langBtn = document.getElementById('lang-btn');
         var isPlaying = false;
+        var currentLang = "ku"; 
+
+        var mainContent = document.getElementById('main-content');
+        var orderScreen = document.getElementById('order-screen');
+        var goToOrderBtn = document.getElementById('go-to-order-btn');
+        var backToCardBtn = document.getElementById('back-to-card');
+        var scrollContainer = document.getElementById('scroll-container');
+
+        // کاتێک شاشەی داواکاری دەکرێتەوە
+        goToOrderBtn.addEventListener('click', function() {
+            mainContent.classList.add('hidden');
+            orderScreen.classList.remove('hidden');
+            triggerScrollAnimation(); // لێدانی ئەنیمەیشن
+        });
+
+        backToCardBtn.addEventListener('click', function() {
+            orderScreen.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+        });
+
+        // 1. ئەنیمەیشنی هێواش کاتێک دادەبەزێتە خوارەوە
+        scrollContainer.addEventListener('scroll', triggerScrollAnimation);
+        
+        function triggerScrollAnimation() {
+            var cards = document.querySelectorAll('.grid-card');
+            cards.forEach(function(card) {
+                var cardTop = card.getBoundingClientRect().top;
+                if (cardTop < window.innerHeight - 50) {
+                    card.classList.add('animate-show');
+                }
+            });
+        }
+
+        // 2. کۆدی داشکاندنی ڕاستەقینە (Live Coupon Code)
+        document.getElementById('apply-coupon').addEventListener('click', function() {
+            var couponInput = document.getElementById('order-coupon').value.trim();
+            if(couponInput.toUpperCase() === "EID2026") {
+                if(navigator.vibrate) navigator.vibrate(100); // لەرینەوەی مۆبایل بۆ سەرکەوتن
+                document.getElementById('old-price-val').innerText = "٥٠,٠٠٠";
+                document.getElementById('new-price-val').innerText = "٣٥,٠٠٠ د.ع";
+                document.getElementById('discount-badge').innerText = "کۆدی داشکاندن جێبەجێ کرا! 🎉";
+                document.getElementById('discount-badge').style.background = "#1dd1a1";
+                alert("کۆدی داشکاندن بە سەرکەوتوویی جێبەجێ کرا!");
+            } else {
+                alert("ئەم کۆدە تێپەڕیوە یان هەڵەیە!");
+            }
+        });
+
+        // 3. کۆدی کردنەوەی پرسیارە باوەکان (Accordion)
+        var faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(function(q) {
+            q.addEventListener('click', function() {
+                var item = this.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // وەرگێڕان و کاتژمێرە کۆنەکە وەک خۆی پارێزراوە
+        const translations = {
+            ku: {
+                langBtn: "عەرەبی",
+                welcome: "بە ڕێزەوە بانگهێشتتان دەکەین بۆ ئامادەبوون لە ئاهەنگی هاوسەرگیریمان",
+                countdownTitle: "لەم ڕۆژە پڕ لە خۆشییەدا کە دڵەکانمان دەبن بە یەک، چاوەڕوانی ئامادەبوونی ئێوەی ئازیزین بۆ ئەوەی پێکەوە سەرەتای جوانترین چیرۆکی ژیانمان دەستپێبکەین.",
+                days: "ڕۆژ", hours: "کاتژمێر", minutes: "خولەک", seconds: "چرکە",
+                date: "<strong>ڕێککەوت:</strong> هەینی، ١٨ی کانوونی یەکەم",
+                time: "<strong>کاتژمێر:</strong> ٧:٠٠ی ئێوارە",
+                location: "<strong>شوێن:</strong> سلێمانی - سەرچنار",
+                mapHint: "بۆ بینینی شوێنی هۆڵەکە لەسەر گووگڵ ماپ- کلیک لە وێنەکەی سەرەوە بکە",
+                rsvpTitle: "پشتڕاستکردنەوەی ئامادەبوون و پیرۆزبایی",
+                lblName: "ناوی بەڕێزتان:",
+                namePlaceholder: "ناوی خۆت بنووسە...",
+                lblAsk: "ئایا ئامادە دەبیت?",
+                optYes: "بەڵێ، بەخۆشحاڵییەوە ئامادە دەبم 😍",
+                optNo: "داوای لێبوردن دەکەم, ناتوانم ئامادەبم 😔",
+                lblMsg: "نامەی پیرۆزبایی (ئارەزوومەندانا):",
+                msgPlaceholder: "نامەیەکی کورت بنووسە...",
+                btnText: "ناردن لە ڕێگەی واتسئەپ",
+                alertName: "تکایە ناوی خۆت بنووسە پێش ناردن!",
+                weddingStarted: "ئاهەنگەکە دەستی پێکردووە!"
+            },
+            ar: {
+                langBtn: "کوردی",
+                welcome: "نتشرف بدعوتكم لحضور حفل زفافنا البهيج",
+                countdownTitle: "في هذا اليوم السعيد الذي تجتمع فيه قلوبنا، ننتظر حضوركم الغالي لنبدأ معاً أجمل فصول حياتنا.",
+                days: "أيام", hours: "ساعة", minutes: "دقيقة", seconds: "ثانية",
+                date: "<strong>التاريخ:</strong> الجمعة، ١٨ كانون الأول",
+                time: "<strong>الوقت:</strong> ٧:٠٠ مساءً",
+                location: "<strong>المكان:</strong> السليمانية - سرجنار",
+                mapHint: "لمشاهدة موقع القاعة على قوقل ماب - اضغط على الصورة أعلاه",
+                rsvpTitle: "تأكيد الحضور والتهاني",
+                lblName: "إسم الحضور الكريم:",
+                namePlaceholder: "اكتب اسمك هنا...",
+                lblAsk: "هل ستشرفنا بحضورك？",
+                optYes: "نعم، بكل سرور سأحضر 😍",
+                optNo: "أعتذر، لا أستطيع الحضور 😔",
+                lblMsg: "رسالة تهنئة (اختياري):",
+                msgPlaceholder: "اكتب تهنئة قصيرة...",
+                btnText: "إرسال عبر الواتساب",
+                alertName: "يرجى كتابة اسمك قبل الإرسال!",
+                weddingStarted: "لقد بدأ الحفل الآن!"
+            }
+        };
+
+        langBtn.addEventListener('click', function() {
+            currentLang = (currentLang === "ku") ? "ar" : "ku";
+            var t = translations[currentLang];
+
+            langBtn.innerText = t.langBtn;
+            document.getElementById('welcome-text').innerHTML = t.welcome;
+            document.getElementById('countdown-title').innerText = t.countdownTitle;
+            document.getElementById('lbl-days').innerText = t.days;
+            document.getElementById('lbl-hours').innerText = t.hours;
+            document.getElementById('lbl-minutes').innerText = t.minutes;
+            document.getElementById('lbl-seconds').innerText = t.seconds;
+            document.getElementById('det-date').innerHTML = t.date;
+            document.getElementById('det-time').innerHTML = t.time;
+            document.getElementById('det-location').innerHTML = t.location;
+            document.getElementById('map-hint').innerText = t.mapHint;
+            document.getElementById('rsvp-title').innerText = t.rsvpTitle;
+            document.getElementById('lbl-name').innerText = t.lblName;
+            document.getElementById('guest-name').placeholder = t.namePlaceholder;
+            document.getElementById('lbl-ask').innerText = t.lblAsk;
+            
+            var optYes = document.getElementById('opt-yes');
+            var optNo = document.getElementById('opt-no');
+            optYes.innerText = t.optYes;
+            optYes.value = currentLang === "ku" ? "بەڵێ، بەخۆشحاڵییەوە ئامادە دەبم" : "نعم، بكل سرور سأحضر";
+            optNo.innerText = t.optNo;
+            optNo.value = currentLang === "ku" ? "داوای لێبوردن دەکەم، ناتوانم ئامادەبم" : "أعتذر، لا أستطيع الحضور";
+
+            document.getElementById('lbl-msg').innerText = t.lblMsg;
+            document.getElementById('message').placeholder = t.msgPlaceholder;
+            document.getElementById('lbl-btn-text').innerText = t.btnText;
+        });
 
         document.getElementById('open-btn').addEventListener('click', function() {
             var gateScreen = document.getElementById('gate-screen');
@@ -410,7 +779,7 @@
                     musicBtn.innerText = "🔊";
                     isPlaying = true;
                 }).catch(function() {
-                    alert("فایلی مۆسیقاکە (music.mp3) لە تەنیشت فایلەکە نییە یان بارنەبووە!");
+                    alert("فایلی مۆسیقاکە لادەست نییە!");
                 });
             }
         });
@@ -419,25 +788,54 @@
             var name = document.getElementById('guest-name').value.trim();
             var status = document.getElementById('attendance').value;
             var msg = document.getElementById('message').value.trim();
+            var t = translations[currentLang];
 
             if (name === "") {
-                alert("تکایە ناوی خۆت بنووسە پێش ناردن!");
+                alert(t.alertName);
                 return;
             }
 
             var phoneNumber = "9647701915449"; 
-            
-            var text = "سڵاو کاک عەلی و دادە منار،\n" +
-                       "من: *" + name + "*\n" +
-                       "وەڵامی بانگهێشت: *" + status + "*\n";
+            var text = currentLang === "ku" ? 
+                "سڵاو کاک عەلی و دادە منار،\n" + "من: *" + name + "*\n" + "وەڵامی بانگهێشت: *" + status + "*\n" :
+                "مرحباً كاك علي و دادة منار،\n" + "أنا: *" + name + "*\n" + "حالة الحضور: *" + status + "*\n";
             
             if (msg !== "") {
-                text += "نامەی پیرۆزبایی: _" + msg + "_";
+                text += (currentLang === "ku" ? "نامەی پیرۆزبایی: _" : "رسالة التهنئة: _") + msg + "_";
             }
 
-            var whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(text);
-            window.open(whatsappUrl, '_blank');
+            window.open("https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(text), '_blank');
         });
+
+        // بەشی فۆڕمی نوێی کڕینی کارت
+        document.getElementById('btn-submit-whatsapp').addEventListener('click', sendOrder);
+        document.getElementById('btn-submit-direct').addEventListener('click', sendOrder);
+
+        function sendOrder() {
+            var name = document.getElementById('order-name').value.trim();
+            var phone = document.getElementById('order-phone').value.trim();
+            var event = document.getElementById('order-event').value;
+            var template = document.getElementById('order-template').value;
+            var notes = document.getElementById('order-notes').value.trim();
+            var coupon = document.getElementById('order-coupon').value.trim();
+
+            if (name === "" || phone === "") {
+                alert("تکایە ناو و ژمارەی مۆبایل بە دروستی پڕ بکەرەوە!");
+                return;
+            }
+
+            var phoneNumber = "9647701915449"; 
+            var text = "🛍️ *داواکاری نوێی کارتی دیجیتاڵی* 🛍️\n\n" +
+                       "👤 ناوی کڕیار: " + name + "\n" +
+                       "📞 ژمارەی مۆبایل: " + phone + "\n" +
+                       "🎉 جۆری بۆنە: " + event + "\n" +
+                       "🎨 قاڵبی دڵخواز: " + template + "\n";
+            if(notes !== "") text += "📝 تێبینی: " + notes + "\n";
+            if(coupon !== "") text += "🎟️ کۆدی داشکاندن: " + coupon + "\n";
+            text += "\n💰 نرخی ڕێککەوتوو: ٣٥,٠٠٠ د.ع";
+
+            window.open("https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(text), '_blank');
+        }
 
         const weddingDate = new Date("December 18, 2026 19:00:00").getTime();
         const timerInterval = setInterval(function() {
@@ -451,7 +849,8 @@
                 document.getElementById("seconds").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
             } else {
                 clearInterval(timerInterval);
-                document.querySelector(".timer").innerHTML = "<h4 style='color:#000000; margin:0; font-size:15px;'>ئاهەنگەکە دەستی پێکردووە!</h4>";
+                var t = translations[currentLang];
+                document.querySelector(".timer").innerHTML = "<h4 style='color:#000000; margin:0; font-size:15px;'>" + t.weddingStarted + "</h4>";
             }
         }, 1000);
     </script>
