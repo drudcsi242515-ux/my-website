@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>db`</title>
+    
+    <!-- لێرەدا کێشی فۆنتەکان بە تەواوی بۆ 700 کە تۆخە جێگیر کراوە -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@700&family=Vazirmatn:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700; /* هەموو لاپەڕەکە دەکات بە تۆخ */
+            background-color: #f5eef8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            color: #000000;
+        }
+
+        .screen {
+            width: 100%;
+            max-width: 450px;
+            height: 100vh;
+            position: relative;
+            transition: opacity 0.8s ease-in-out;
+            overflow: hidden;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; 
+        }
+
+        #gate-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            opacity: 1;
+        }
+
+        .open-btn {
+            margin-bottom: 25%;
+            padding: 12px 40px;
+            background: linear-gradient(45deg, #ffc0cb, #f5f5dc);
+            color: #000000;
+            border: none;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 40px rgba(255, 192, 203, 0.8);
+            animation: pulse 2s infinite;
+            z-index: 2;
+            font-family: inherit;
+        }
+
+        #main-content {
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.177);
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .overlay-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.65); 
+            padding: 15px 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .music-control {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #000000;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .bismillah {
+            font-family: 'Amiri', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: #000000;
+            margin-top: 50px !important; 
+            margin-bottom: 5px;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .quran-verse {
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px; 
+            font-weight: 700; /* ئایەتەکە بە تەواوی تۆخە */
+            color: #000000;
+            line-height: 1.8;
+            margin: 8px 0 15px 0;
+            display: block;
+        }
+
+        .names {
+            color: #000000;
+            font-size: 22px;
+            margin: 5px 0 10px 0;
+            font-weight: 700;
+        }
+
+        .welcome-text {
+            color: #000000;
+            font-size: 15px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #000000, transparent);
+            margin: 10px 0;
+        }
+
+        .countdown h3 {
+            color: #000000;
+            font-size: 15px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px;
+            border-radius: 15px;
+            border: 1px solid #000000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .timer div {
+            font-size: 13px;
+            color: #000000;
+            font-weight: 700;
+        }
+
+        .timer span {
+            display: block;
+            font-size: 18px;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 5px;
+            color: #000000;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .details p {
+            font-size: 15px;
+            margin: 3px 0;
+            font-weight: 700;
+        }
+
+        .map-link-wrapper {
+            display: block;
+            margin-top: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .map-link-wrapper:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .map-img {
+            display: block;
+            height: auto;
+            max-width: 100%;
+            width: 360px;
+            border-radius: 15px;
+        }
+
+        .rsvp-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px;
+            border-radius: 15px;
+            border: 1px solid #000000;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: right;
+        }
+
+        .rsvp-section h3 {
+            color: #000000;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 15px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 8px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 3px;
+            font-size: 15px;
+            color: #000000;
+            font-weight: 700;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #000000;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 15px;
+            color: #000000;
+            font-weight: 700;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #25D366; 
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s;
+            font-family: inherit;
+            margin-top: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" src="music.mp3" loop preload="auto"></audio>
+
+    <div id="gate-screen" class="screen">
+        <video class="bg-video" autoplay loop muted playsinline poster="poster1.jpg">
+            <source src="background.mp4" type="video/mp4">
+        </video>
+        <button id="open-btn" class="open-btn">کلیک بکە بۆ کردنەوە</button>
+    </div>
+
+    <div id="main-content" class="screen hidden">
+        
+        <div id="music-btn" class="music-control">🔊</div>
+
+        <video class="bg-video" autoplay loop muted playsinline poster="poster2.jpg">
+            <source src="background.mp4" type="video/mp4">
+        </video>
+
+        <div class="overlay-content">
+            <h1 class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</h1>
+            
+            <p class="quran-verse">
+                وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا<br>
+                وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ<br>
+                إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+            </p>
+
+            <h1 class="names">عەلی & منار</h1>
+            <p class="welcome-text">بە ڕێزەوە بانگهێشتتان دەکەین بۆ ئامادەبوون لە ئاهەنگی هاوسەرگیریمان</p>
+
+            <hr>
+
+            <div class="countdown">
+                <h3>لەم ڕۆژە پڕ لە خۆشییەدا کە دڵەکانمان دەبن بە یەک، چاوەڕوانی ئامادەبوونی ئێوەی ئازیزین بۆ ئەوەی پێکەوە سەرەتای جوانترین چیرۆکی ژیانمان دەستپێبکەین.</h3>
+                <div class="timer">
+                    <div><span id="days">00</span> ڕۆژ</div>
+                    <div><span id="hours">00</span> کاتژمێر</div>
+                    <div><span id="minutes">00</span> خولەک</div>
+                    <div><span id="seconds">00</span> چرکە</div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="details">
+                <p><strong>ڕێککەوت:</strong> هەینی، ١٨ی کانوونی یەکەم</p>
+                <p><strong>کاتژمێر:</strong> ٧:٠٠ی ئێوارە</p>
+                <p><strong>شوێن:</strong> سلێمانی - سەرچنار </p>
+
+                <a href="https://maps.app.goo.gl/q8WhY6UVJJkHYHXw9?g_st=ipc" target="_blank" class="map-link-wrapper">
+                    <img src="holl.jpg" class="map-img" alt="شوێنی هۆڵی ئۆسکار لەسەر نەخشە">
+                </a>
+                <p style="font-size: 15px; color: #000000; margin-top: 5px; font-weight: bold;">بۆ بینینی شوێنی هۆڵەکە لەسەر گووگڵ ماپ- کلیک لە وێنەکەی سەرەوە بکە</p>
+            </div>
+
+            <hr>
+
+            <div class="rsvp-section">
+                <h3>پشتڕاستکردنەوەی ئامادەبوون و پیرۆزبایی</h3>
+                <div class="form-group">
+                    <label for="guest-name">ناوی بەڕێزتان:</label>
+                    <input type="text" id="guest-name" placeholder="ناوی خۆت بنووسە...">
+                </div>
+                <div class="form-group">
+                    <label for="attendance">ئایا ئامادە دەبیت?</label>
+                    <select id="attendance">
+                        <option value="بەڵێ، بەخۆشحاڵییەوە ئامادە دەبم">بەڵێ، بەخۆشحاڵییەوە ئامادە دەبم 😍</option>
+                        <option value="داوای لێبوردن دەکەم، ناتوانم ئامادەبم">داوای لێبوردن دەکەم، ناتوانم ئامادەبم 😔</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">نامەی پیرۆزبایی (ئارەزوومەندانا):</label>
+                    <input type="text" id="message" placeholder="نامەیەکی کورت بنووسە...">
+                </div>
+                <button id="send-whatsapp" class="submit-btn">💬 ناردن لە ڕێگەی واتسئەپ</button>
+            </div>
+            
+            <div style="height: 20px;"></div> </div>
+    </div>
+
+    <script>
+        var music = document.getElementById('bg-music');
+        var musicBtn = document.getElementById('music-btn');
+        var isPlaying = false;
+
+        document.getElementById('open-btn').addEventListener('click', function() {
+            var gateScreen = document.getElementById('gate-screen');
+            var mainContent = document.getElementById('main-content');
+
+            gateScreen.style.opacity = '0';
+            
+            setTimeout(function() {
+                gateScreen.classList.add('hidden');
+                mainContent.classList.remove('hidden');
+                setTimeout(function() {
+                    mainContent.style.opacity = '1';
+                }, 50);
+            }, 800);
+
+            music.play().then(function() {
+                isPlaying = true;
+                musicBtn.innerText = "🔊";
+            }).catch(function(e) { 
+                isPlaying = false;
+                musicBtn.innerText = "🔇";
+            });
+        });
+
+        musicBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.innerText = "🔇";
+                isPlaying = false;
+            } else {
+                music.play().then(function() {
+                    musicBtn.innerText = "🔊";
+                    isPlaying = true;
+                }).catch(function() {
+                    alert("فایلی مۆسیقاکە (music.mp3) لە تەنیشت فایلەکە نییە یان بارنەبووە!");
+                });
+            }
+        });
+
+        document.getElementById('send-whatsapp').addEventListener('click', function() {
+            var name = document.getElementById('guest-name').value.trim();
+            var status = document.getElementById('attendance').value;
+            var msg = document.getElementById('message').value.trim();
+
+            if (name === "") {
+                alert("تکایە ناوی خۆت بنووسە پێش ناردن!");
+                return;
+            }
+
+            var phoneNumber = "9647701915449"; 
+            
+            var text = "سڵاو کاک عەلی و دادە منار،\n" +
+                       "من: *" + name + "*\n" +
+                       "وەڵامی بانگهێشت: *" + status + "*\n";
+            
+            if (msg !== "") {
+                text += "نامەی پیرۆزبایی: _" + msg + "_";
+            }
+
+            var whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(text);
+            window.open(whatsappUrl, '_blank');
+        });
+
+        const weddingDate = new Date("December 18, 2026 19:00:00").getTime();
+        const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance > 0) {
+                document.getElementById("days").innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                document.getElementById("hours").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                document.getElementById("minutes").innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                document.getElementById("seconds").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+            } else {
+                clearInterval(timerInterval);
+                document.querySelector(".timer").innerHTML = "<h4 style='color:#000000; margin:0; font-size:15px;'>ئاهەنگەکە دەستی پێکردووە!</h4>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
